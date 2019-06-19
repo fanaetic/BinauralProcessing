@@ -28,7 +28,7 @@ h = real(fftshift(ifft(H))) .* hann(N);
 
 % delay of N/2. Why? The delay's impulse response is non-causal and shifted by N/2 to
 % be made causal - the left channel has to be adjusted to this.
-sl = [zeros(N/2,1); s(1:end-N/2)];  
+sl = [zeros(N/2, 1); s(1:end-N/2, :)];  
 % Apply the ir to the right channel:
 sr = fftfilt(h, s);
 
