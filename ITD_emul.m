@@ -6,10 +6,15 @@
 
 function out = ITD_emul( wavname, ITD )
 
-% This loads one set of HRTFs:
-[s, fs] = audioread(wavname);
-% [s, fs] = wavread(wavname);  % Alternative according to Matlab/Octave-version
-
+    % This loads one set of HRTFs:
+if ischar( wavname )
+    [s, fs] = audioread(wavname);
+    % [s, fs] = wavread(wavname);  % Alternative according to Matlab/Octave-version
+else 
+    fs = 44100;
+    s = wavname;
+end
+    
 % DFT-length; estimate by "0.2/340*48000":
 N = 256;
 k = 0:N/2;
