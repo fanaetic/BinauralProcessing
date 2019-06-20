@@ -20,9 +20,10 @@ switch simulationCase
     case 'HRTF'
         [inSignal, FS] = srmHRTFdemo(15);
     otherwise
-        error(['"' simulCase '" is not a valid case for ' mfilename])
+        error(['"' simulationCase '" is not a valid case for ' mfilename])
 end
 
+% calculate the factor from the hearingloss
 factor = 10.^(-hearingloss ./20 );
 
 % simulate onesided hearing loss with simple filtering and dampening
@@ -33,6 +34,7 @@ n = 3;
 k = ceil( n * log2(fmmax/fmmin) );
 fm = fmmin * 2.^((0:k)/n);
 
+% filter the signal and scale it according to the hearing loss
 for in = 1:length( fm )
     [ b, a ] = butter( order, [2^(-1/(2*n)) 2^(1/(2*n))]*fm(in)/FS*2, 'bandpass' );
     outfiltered = filter( b, a, inSignal(:, earside) );
