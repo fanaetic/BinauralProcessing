@@ -41,10 +41,6 @@ noise = noise(1:length(speech),:);
 factor = 10.^(snr ./ 20);
 noise = bsxfun(@times, noise, factor);
 
-% create stereo signals
-% noise = [noise noise];
-% speech = [speech speech];
-
 % interaural time difference so that the signal originates from the front
 ITDspeech = 0;
 outSpeech = ITD_emul( speech, ITDspeech );
