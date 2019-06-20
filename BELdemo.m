@@ -16,9 +16,9 @@ end
 
 switch simulationCase
     case 'ITD'
-        [inSignal, FS] = srmITDdemo(15);
+        [inSignal, FS] = srmITDdemo(15, 1.5e-3);
     case 'HRTF'
-        [inSignal, FS] = srmHRTFdemo(15);
+        [inSignal, FS] = srmHRTFdemo(15, 90);
     otherwise
         error(['"' simulCase '" is not a valid case for ' mfilename])
 end

@@ -3,10 +3,10 @@ function varargout = srmHRTFdemo( varargin )
 % handle the input of the function
 if nargin == 0
     snr = 5;
-    ANGLEnoise = 90;
+    ANGLEnoise = 0;
 elseif nargin == 1
     snr = varargin{1};
-    ANGLEnoise = 90;
+    ANGLEnoise = 0;
 elseif nargin == 2
     snr = varargin{1};
     ANGLEnoise = varargin{2};

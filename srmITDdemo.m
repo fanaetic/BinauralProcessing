@@ -3,10 +3,10 @@ function varargout = srmITDdemo( varargin )
 % handle the input
 if nargin == 0
     snr = 5;
-    ITDnoise = 1.5e-3;
+    ITDnoise = 0;
 elseif nargin == 1
     snr = varargin{1};
-    ITDnoise = 1.5e-3;
+    ITDnoise = 0;
 elseif nargin == 2
     snr = varargin{1};
     ITDnoise = varargin{2};
