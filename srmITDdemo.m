@@ -1,6 +1,6 @@
 function varargout = srmITDdemo( varargin )
 
-
+% handle the input
 if nargin == 0
     snr = 5;
     ITDspeech = 1.5e-3;
@@ -18,7 +18,7 @@ end
 [speech, FSspeech] = audioread( '07970.wav' );
 
 % set the duration of the noise relative to the speech signal. Here, the
-% noise will be cut randomly and with an extra second. 
+% noise will be cut randomly and with an extra second.
 wavsize = length( speech );
 startIndex = floor(rand * (wavsize-2*FSspeech)); startIndex = startIndex(1,1);
 endIndex = startIndex + wavsize + 1*FSspeech;
@@ -56,6 +56,10 @@ outSpeech = ITD_emul( speech, ITDspeech );
 outSignal = outNoise + outSpeech;
 outSignal = hanwin( outSignal, (100e-3*FSspeech) );
 
+% scale the signal
+outSignal = 0.7*outSignal/max(max(abs(outSignal)));
+
+% handle the outpu
 if nargout == 0
     sound( outSignal, FSspeech );
 elseif nargout == 1
@@ -65,5 +69,4 @@ elseif nargout == 2
     varargout{2} = FSspeech;
 end
 
-   
 end
