@@ -38,7 +38,7 @@ end
 noise = noise(1:length(speech),:);
 
 % scale the noise signal 5 dB louder than the speech signal (-5 dB SNR).
-factor = 10.^(-snr ./ 20);
+factor = 10.^(snr ./ 20);
 noise = bsxfun(@times, noise, factor);
 
 % create stereo signals
