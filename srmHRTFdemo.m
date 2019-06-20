@@ -3,13 +3,13 @@ function varargout = srmHRTFdemo( varargin )
 % handle the input of the function
 if nargin == 0
     snr = 5;
-    ANGLEspeech = 90;
+    ANGLEnoise = 90;
 elseif nargin == 1
     snr = varargin{1};
-    ANGLEspeech = 90;
+    ANGLEnoise = 90;
 elseif nargin == 2
     snr = varargin{1};
-    ANGLEspeech = varargin{2};
+    ANGLEnoise = varargin{2};
 else
     error("Number of input arguments exceeded")
 end
@@ -46,7 +46,7 @@ noise = [noise noise];
 speech = [speech speech];
 
 % set constants and load the HRTF data set
-ANGLEnoise = 0;
+ANGLEspeech = 0;
 ELEVATION = 0;
 FShrtf = 48000;
 HRTFs = load( 'HRTFs_subj1.mat' );

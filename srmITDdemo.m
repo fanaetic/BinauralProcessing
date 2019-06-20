@@ -3,13 +3,13 @@ function varargout = srmITDdemo( varargin )
 % handle the input
 if nargin == 0
     snr = 5;
-    ITDspeech = 1.5e-3;
+    ITDnoise = 1.5e-3;
 elseif nargin == 1
     snr = varargin{1};
-    ITDspeech = 1.5e-3;
+    ITDnoise = 1.5e-3;
 elseif nargin == 2
     snr = varargin{1};
-    ITDspeech = varargin{2};
+    ITDnoise = varargin{2};
 else
     error("Number of input arguments exceeded")
 end
@@ -46,11 +46,11 @@ noise = bsxfun(@times, noise, factor);
 % speech = [speech speech];
 
 % interaural time difference so that the signal originates from the front
-ITDnoise = 0;
-outNoise = ITD_emul( noise, ITDnoise );
+ITDspeech = 0;
+outSpeech = ITD_emul( speech, ITDspeech );
 
 % interaural time difference so that the signal originates from the side
-outSpeech = ITD_emul( speech, ITDspeech );
+outNoise = ITD_emul( noise, ITDnoise );
 
 % mix both signlas
 outSignal = outNoise + outSpeech;
