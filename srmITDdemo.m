@@ -2,7 +2,7 @@ function varargout = srmITDdemo( varargin )
 
 % handle the input
 if nargin == 0
-    snr = 5;
+    snr = -5;
     ITDnoise = 0;
 elseif nargin == 1
     snr = varargin{1};
@@ -38,7 +38,7 @@ end
 noise = noise(1:length(speech),:);
 
 % scale the noise signal 5 dB louder than the speech signal (-5 dB SNR).
-factor = 10.^(snr ./ 20);
+factor = 10.^(-snr ./ 20);
 noise = bsxfun(@times, noise, factor);
 
 % interaural time difference so that the signal originates from the front
